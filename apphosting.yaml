@@ -1,0 +1,69 @@
+# The name of the backend.
+# The name must be unique within the project and cannot be changed after creation.
+name: shraga01
+# The region to deploy the backend.
+# The region cannot be changed after creation.
+region: us-central1
+# The App Hosting backend requires a build to generate a server.
+build:
+  # The command to build the server.
+  command: npm run build
+# The App Hosting backend requires a start command to run the server.
+run:
+  # The command to start the server.
+  command: npm start
+  # The number of instances to run.
+  minInstances: 1
+# The environment variables to set.
+env:
+  - variable: FIREBASE_APP_HOSTING_URL
+    # FIREBASE_APP_HOSTING_URL is a system-provided environment variable.
+    # It is the URL of the App Hosting backend.
+    availability:
+      - BUILD
+      - RUNTIME
+# The service account to use.
+serviceAccount:
+  # The service account must be unique within the project.
+  name: app-hosting-backend
+# The concurrency of the backend.
+concurrency: 80
+# The VPC connector to use.
+# vpc:
+#   connector: my-vpc-connector
+#   egress: all-traffic
+# The secrets to use.
+# secrets:
+# - name: my-secret
+#   version: 1
+# - name: another-secret
+#   version: latest
+# The ingress settings for the backend.
+# ingress: internal-and-gclb
+# The CPU settings for the backend.
+cpu: 1
+# The memory settings for the backend.
+memoryMiB: 512
+# The timeout for the backend.
+timeoutSeconds: 60
+# The labels to apply to the backend.
+labels:
+  firebase-app-hosting-integrated: "true"
+  firebase-app-hosting-app-name: chen-and-yossi-co
+# The HTTPS trigger for the backend.
+# httpsTrigger: {}
+# The scheduled trigger for the backend.
+# scheduledTrigger:
+#   schedule: every 5 minutes
+#   timeZone: "America/Los_Angeles"
+#   retryConfig:
+#     retryCount: 3
+# The task queue trigger for the backend.
+# taskQueueTrigger: {}
+# The blocking trigger for the backend.
+# blockingTrigger:
+#   eventType: beforeSignIn
+#   options:
+#     accessToken: true
+#     idToken: true
+#     refreshToken: true
